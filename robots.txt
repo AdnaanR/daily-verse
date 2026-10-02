@@ -6,3 +6,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://inspiredailyverse.netlify.app/sitemap.xml
