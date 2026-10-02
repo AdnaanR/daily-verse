@@ -208,7 +208,37 @@
       margin-top: 2rem;
     }
 
+    /* ---- Side-by-Side Ad Layout ---- */
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .side-ad {
+      width: 160px;
+      min-height: 350px;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .center-main {
+      flex: 1;
+      max-width: 580px;
+      width: 100%;
+    }
+
     /* ---- Mobile Responsive ---- */
+    @media (max-width: 920px) {
+      .side-ad { display: none; }
+      .content-layout { max-width: 580px; }
+    }
     @media (max-width: 480px) {
       body { padding: 1.75rem 0.85rem 1rem; }
       h1 { font-size: 1.8rem; }
@@ -231,27 +261,40 @@
     </p>
   </header>
 
-  <!-- The One Box / One Answer -->
-  <main>
-    <div class="verse-card" id="verseBox">
-      <div class="card-top">
-        <span class="date-badge" id="verseDate">Today's Verse</span>
-        <span class="theme-badge" id="verseTheme">Hope & Strength</span>
-      </div>
-      <p class="verse-quote" id="verseText">
-        "For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope."
-      </p>
-      <div class="verse-reference" id="verseRef">Jeremiah 29:11</div>
+  <!-- Side-by-Side Layout: Left Ad | Center Verse | Right Ad -->
+  <div class="content-layout">
+    
+    <!-- Left Side Ad Banner -->
+    <div class="side-ad left-ad" id="ad-left"></div>
+
+    <!-- Center: The One Box / One Answer -->
+    <div class="center-main">
+      <main>
+        <div class="verse-card" id="verseBox">
+          <div class="card-top">
+            <span class="date-badge" id="verseDate">Today's Verse</span>
+            <span class="theme-badge" id="verseTheme">Hope & Strength</span>
+          </div>
+          <p class="verse-quote" id="verseText">
+            "For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope."
+          </p>
+          <div class="verse-reference" id="verseRef">Jeremiah 29:11</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="btnNext" onclick="loadNextVerse()">✨ Give Me Another Verse</button>
+          <button class="btn btn-secondary" id="btnCopy" onclick="copyVerse()">📋 Copy Verse</button>
+        </div>
+      </main>
+
+      <!-- Ad Slot (Below Button on Mobile) -->
+      <div class="ad-slot" id="ad-bottom"></div>
     </div>
 
-    <div class="actions">
-      <button class="btn btn-primary" id="btnNext" onclick="loadNextVerse()">✨ Give Me Another Verse</button>
-      <button class="btn btn-secondary" id="btnCopy" onclick="copyVerse()">📋 Copy Verse</button>
-    </div>
-  </main>
+    <!-- Right Side Ad Banner -->
+    <div class="side-ad right-ad" id="ad-right"></div>
 
-  <!-- Ad Slot (Top/Middle) -->
-  <div class="ad-slot" id="ad-top"></div>
+  </div>
 
 </div>
 
